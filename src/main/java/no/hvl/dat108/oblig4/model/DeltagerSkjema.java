@@ -30,73 +30,91 @@ public class DeltagerSkjema {
     public static final String ONE_TO_19_TIMES = "{1,19}";
     public static final String EIGHT_TIMES = "{8}";
 
-    //TODO - Annotér med valideringsregler /-krav
-	private String fornavn;
+    @NotNull(message = Feilmeldinger.UGYLDIG_FORNAVN_MLD)
+    @Pattern(regexp = STRING_START
+            + A_CAPITAL_LETTER
+            + A_LETTER_SPACE_OR_HYPHEN
+            + ONE_TO_19_TIMES
+            + STRING_END,
+            message = Feilmeldinger.UGYLDIG_FORNAVN_MLD)
+    private String fornavn;
 
-    //TODO - Annotér med valideringsregler /-krav
-	private String etternavn;
+    @NotNull(message = Feilmeldinger.UGYLDIG_ETTERNAVN_MLD)
+    @Pattern(regexp = STRING_START
+            + A_CAPITAL_LETTER
+            + A_LETTER_OR_HYPHEN + ONE_TO_19_TIMES
+            + STRING_END,
+            message = Feilmeldinger.UGYLDIG_ETTERNAVN_MLD)
+    private String etternavn;
 
-    //TODO - Annotér med valideringsregler /-krav
-	private String mobil;
+    @NotNull(message = Feilmeldinger.UGYLDIG_MOBIL_MLD)
+    @Pattern(regexp = STRING_START + A_DIGIT + EIGHT_TIMES + STRING_END,
+            message = Feilmeldinger.UGYLDIG_MOBIL_MLD)
+    private String mobil;
 
-    //TODO - Annotér med valideringsregler /-krav
-	private String passord;
-    
+    @NotNull(message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
+    @Size(min = 6, message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
+    private String passord;
+
     //Denne valideres programmatisk i PaameldingController
-	private String passordRepetert;
+    private String passordRepetert;
 
-    //TODO - Annotér med valideringsregler /-krav
-	private String kjonn;
-	
-	//---
-    
+
+    @NotNull(message = Feilmeldinger.UGYLDIG_KJONN_MLD)
+    @Pattern(regexp = "^(mann|kvinne)$",
+            message = Feilmeldinger.UGYLDIG_KJONN_MLD)
+    private String kjonn;
+
+    //---
+
     /**
-     * Lager og returnerer et deltagerobjekt (/-entitet) basert på 
+     * Lager og returnerer et deltagerobjekt (/-entitet) basert på
      * dataene i dette deltagerskjemaet.
-     * 
+     *
      * Parameteren passord inneholder skal inneholde et ferdig hashet passord !
      * Det er valgt å gjøre hashing av passord utenfor Deltagerskjema-klassen for
      * å holde den "plain".
      */
     public Deltager lagDeltager(String hashetPassord) {
-    	return new Deltager(mobil, hashetPassord, fornavn, etternavn, kjonn);
- 	}
-	
-	public String getFornavn() {
-		return fornavn;
-	}
-	public void setFornavn(String fornavn) {
-		this.fornavn = fornavn;
-	}
-	public String getEtternavn() {
-		return etternavn;
-	}
-	public void setEtternavn(String etternavn) {
-		this.etternavn = etternavn;
-	}
-	public String getMobil() {
-		return mobil;
-	}
-	public void setMobil(String mobil) {
-		this.mobil = mobil;
-	}
-	public String getPassord() {
-		return passord;
-	}
-	public void setPassord(String passord) {
-		this.passord = passord;
-	}
-	public String getPassordRepetert() {
-		return passordRepetert;
-	}
-	public void setPassordRepetert(String passordRepetert) {
-		this.passordRepetert = passordRepetert;
-	}
-	public String getKjonn() {
-		return kjonn;
-	}
-	public void setKjonn(String kjonn) {
-		this.kjonn = kjonn;
-	}
+        return new Deltager(mobil, hashetPassord, fornavn, etternavn, kjonn);
+    }
+
+    public String getFornavn() {
+        return fornavn;
+    }
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
+    }
+    public String getEtternavn() {
+        return etternavn;
+    }
+    public void setEtternavn(String etternavn) {
+        this.etternavn = etternavn;
+    }
+    public String getMobil() {
+        return mobil;
+    }
+    public void setMobil(String mobil) {
+        this.mobil = mobil;
+    }
+    public String getPassord() {
+        return passord;
+    }
+    public void setPassord(String passord) {
+        this.passord = passord;
+    }
+    public String getPassordRepetert() {
+        return passordRepetert;
+    }
+    public void setPassordRepetert(String passordRepetert) {
+        this.passordRepetert = passordRepetert;
+    }
+    public String getKjonn() {
+        return kjonn;
+    }
+    public void setKjonn(String kjonn) {
+        this.kjonn = kjonn;
+    }
 
 }
+
