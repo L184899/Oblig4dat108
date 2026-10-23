@@ -8,9 +8,40 @@
 <body>
 	<h2>Påmelding</h2>
 
-    <!-- TODO - Eventuell feilmelding med rød tekst -->
+    <p th:if="${feilmelding}" th:text="${feilmelding}" style="color:red"></p>
 
-    <!-- TODO - Påmeldingsskjemaet -->
+    <form method="post" action="/paamelding">
+        <fieldset>
+            <label for="fornavn">Fornavn</label>
+            <input type="text" id="fornavn" name="fornavn"
+                   th:value="${deltager?.fornavn}" required />
+
+            <label for="etternavn">Etternavn</label>
+            <input type="text" id="etternavn" name="etternavn"
+                   th:value="${deltager?.etternavn}" required />
+
+            <label for="mobil">Mobil (8 siffer)</label>
+            <input type="text" id="mobil" name="mobil"
+                   th:value="${deltager?.mobil}" required />
+
+            <label for="passord">Passord</label>
+            <input type="password" id="passord" name="passord" required />
+
+            <label for="passordRepetert">Passord repetert</label>
+            <input type="password" id="passordRepetert" name="passordRepetert" required />
+
+            <label>Kjønn</label>
+            <input type="radio" id="mann" name="kjonn" value="mann"
+                   th:checked="${deltager?.kjonn == 'mann'}" />
+            <label for="mann">mann</label>
+            <input type="radio" id="kvinne" name="kjonn" value="kvinne"
+                   th:checked="${deltager?.kjonn == 'kvinne'}" />
+            <label for="kvinne">kvinne</label>
+
+            <br/><br/>
+            <button type="submit">Meld meg på</button>
+        </fieldset>
+    </form>
 
 </body>
 </html>

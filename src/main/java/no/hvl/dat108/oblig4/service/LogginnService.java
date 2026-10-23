@@ -14,7 +14,8 @@ public class LogginnService {
      */
     public static boolean erBrukerLoggetInn(HttpServletRequest request) {
 
-        //TODO - Skriv denne metoden.
+        HttpSession sesjon = request.getSession(false);   // false = ikke lag ny
+        return sesjon != null && sesjon.getAttribute("innlogget") != null;
     }
 
     /**
@@ -23,7 +24,10 @@ public class LogginnService {
      */
     public static void loggUtBruker(HttpServletRequest request) {
 
-        //TODO - Skriv denne metoden.
+        HttpSession sesjon = request.getSession(false);
+        if (sesjon != null) {
+            sesjon.invalidate();
+        }
     }
 
     /**
@@ -33,8 +37,17 @@ public class LogginnService {
      */
     public static void loggInnBruker(HttpServletRequest request, Deltager deltager) {
 
-        //TODO - Skriv denne metoden.
+        loggUtBruker(request);                            // ny sesjon ved innlogging
+        HttpSession sesjon = request.getSession(true);
+        sesjon.setAttribute("innlogget", deltager);
     }
 
+    /**
+     * @return Innlogget deltager for gjeldende request/sesjon, null hvis ingen
+     */
+    public static Deltager hentInnloggetBruker(HttpServletRequest request) {
 
+        HttpSession sesjon = request.getSession(false);
+        return (sesjon == null) ? null : (Deltager) sesjon.getAttribute("innlogget");
+    }
 }
