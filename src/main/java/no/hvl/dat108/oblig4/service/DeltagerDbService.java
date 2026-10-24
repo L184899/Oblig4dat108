@@ -14,10 +14,7 @@ public class DeltagerDbService {
         new Deltager("11223344", "dummyhash", "Lise", "Hansen", "kvinne")
     ));
 
-    /**
-     * @param mobil
-     * @return En deltager med gitt mobilnummer, null hvis ingen.
-     */
+
     public static Deltager finnDeltagerMedMobil(String mobil) {
 
         return deltagerliste.stream()
@@ -26,9 +23,6 @@ public class DeltagerDbService {
                 .orElse(null);
     }
 
-    /**
-     * @return Alle deltagerne, sortert stigende på fullt navn.
-     */
     public static List<Deltager> finnAlleSortertPaaFulltNavn() {
 
         return deltagerliste.stream()
@@ -36,19 +30,11 @@ public class DeltagerDbService {
                 .toList();
     }
 
-    /**
-     * @param mobil
-     * @return Om deltager med gitt mobil er påmeldt
-     */
     public static boolean erDeltagerPaameldt(String mobil) {
 
         return finnDeltagerMedMobil(mobil) != null;
     }
 
-    /**
-     * Lagrer (melder på) en deltager ved å legge til i listen.
-     * @param deltager
-     */
     public static void lagreDeltager(Deltager deltager) {
 
         deltagerliste.add(deltager);

@@ -19,35 +19,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class PaameldingController {
 	
-	/*
-	 * GET /paamelding - Viser påmeldingsskjema vhja av aktuelt view
-	 */
+
     @GetMapping("/paamelding")
     public String henteSkjema() {
 
         return "paameldingsskjema";
     }
     
-	/*
-	 * POST /paamelding - Tar i mot innsendt påmeldingsskjema, dvs:
-	 *  - Sjekker at all input er gyldig og at ikke allerede påmeldt
-	 *  - Lagrer ny deltager i databasen
-	 *  - Logger inn
-	 *  - Går (redirecter) til påmeldingsbekreftelse
-	 */
+
     @PostMapping("/paamelding")
     public String meldePaa(HttpServletRequest request, 
     		@Valid @ModelAttribute("deltager") DeltagerSkjema skjema,
 			BindingResult bindingResult, Model model) {
 
-    	/* For å gjøre controller-metoden kortere, kan selve valideringen
-    	 * skilles ut i en egen hjelpemetode (se nederst). Denne returnerer en
-    	 * feilmelding om noe er galt, og null hvis alt er OK. */
     	String feilmelding = meldingFraInputValidering(skjema, bindingResult);
 
         if (feilmelding != null) {
-            // Vis skjemaet på nytt. "deltager" (skjema) ligger allerede i modellen,
-            // så verdiene brukeren skrev står igjen.
+
             model.addAttribute("feilmelding", feilmelding);
             return "paameldingsskjema";
         }
@@ -61,13 +49,7 @@ public class PaameldingController {
         return "redirect:/paameldt";
     }
 
-	/*
-	 * GET /paameldt - Viser kvittering for påmelding vhja view
-	 *
-	 * Krever at man er innlogget.
-     * Hvis ikke bruker er innlogget, skal det gjøres er redirect til /innlogging
-     * med en feilmelding satt som en flash-attributt.
-     */
+
     @GetMapping("/paameldt")
     public String hentePaameldt(HttpServletRequest request, RedirectAttributes ra,
                                 Model model) {
@@ -81,17 +63,7 @@ public class PaameldingController {
         return "paameldingsbekreftelse";
     }
     
-	/*
-	 * Basic validering av feltene fornavn, etternavn, mobil, passord og kjonn gjøres ihht.
-	 * annoteringene i DeltagerSkjema.
-	 * 
-	 * Feilhåndtering av repetert passord kan gjøres som nedenfor.
-	 * Feilhåndtering av om bruker med mobil allerede er påmeldt kan gjøres som nedenfor.
-	 * 
-	 * PS! Det er ikke et krav om tilbakemelding på individuelle felt med feil.
-	 * Altså: Det er greit nok med melding at deltager allerede er påmeldt,
-	 * og/eller generell feilmelding om ugyldige data i skjema.
-	 */
+
 	private String meldingFraInputValidering(DeltagerSkjema skjema, BindingResult bindingResult) {
 		String melding = null;    	
     	if (bindingResult.hasErrors()) {
