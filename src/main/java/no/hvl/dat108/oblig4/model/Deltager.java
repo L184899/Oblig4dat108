@@ -4,23 +4,18 @@ import java.util.Comparator;
 
 public class Deltager {
     
-    private static final String MANN_SYMBOL = "&#9794;";    // Unicode, symbol for mann
-    private static final String KVINNE_SYMBOL = "&#9792;";  // Unicode, symbol for kvinne
+    private static final String MANN_SYMBOL = "&#9794;";
+    private static final String KVINNE_SYMBOL = "&#9792;";
 
-    //Denne kan brukes hvis man ønsker sortering på full navn
     public static final Comparator<Deltager> paaFulltNavn 
     		= Comparator.comparing(Deltager::getFulltNavn); 
-    
-    //---
-    
+
     private String mobil;
     private String hashetPassord;
     private String fornavn;
     private String etternavn;
     private String kjonn;
-    
-    //---
-    
+
     public Deltager() {}
     
     public Deltager(String mobil, String hashetPassord, String fornavn, String etternavn, String kjonn) {
@@ -31,15 +26,11 @@ public class Deltager {
 		this.kjonn = kjonn;
 	}
 
-    //Forenkler oppsett av testdata i enhetstest
     public Deltager(String fornavn, String etternavn) {
 		this.fornavn = fornavn;
 		this.etternavn = etternavn;
-		//Resten blir null
 	}
-    
-	//---
-    
+
     public String getMobilFormatert() {
         return getMobil().substring(0,3) + " " + getMobil().substring(3,5)
                 + " " + getMobil().substring(5,8);
@@ -52,9 +43,7 @@ public class Deltager {
     public String getKjonnsymbol() {
         return (getKjonn().equals("mann") ? MANN_SYMBOL : KVINNE_SYMBOL);
     }
-    
-    //---
-    
+
 	public String getMobil() {
         return mobil;
     }

@@ -68,7 +68,6 @@ public class PaameldingController {
 		String melding = null;    	
     	if (bindingResult.hasErrors()) {
     		melding = Feilmeldinger.GENERELL_BINDING_MLD;
-    		//Kunne her hentet ut melding(er) fra bindingResult i stedet.
     		
     	} else if (!skjema.getPassord().equals(skjema.getPassordRepetert())) {
     		melding = Feilmeldinger.FEIL_REPETERT_PASSORD_MLD;

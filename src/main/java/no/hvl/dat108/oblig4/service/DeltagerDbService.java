@@ -14,7 +14,6 @@ public class DeltagerDbService {
         new Deltager("11223344", "dummyhash", "Lise", "Hansen", "kvinne")
     ));
 
-
     public static Deltager finnDeltagerMedMobil(String mobil) {
 
         return deltagerliste.stream()

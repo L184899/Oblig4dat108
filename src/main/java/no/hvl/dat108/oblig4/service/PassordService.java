@@ -19,7 +19,7 @@ public class PassordService {
 	public static boolean erPassordKorrekt(
 			String passord, String hashetPassord) {
 		
-		if (passord == null || hashetPassord == null) { //Burde validert skikkelig!!
+		if (passord == null || hashetPassord == null) {
 			throw new IllegalArgumentException();
 		}
 		return hashetPassord.equals(lagHashetPassord(passord));
@@ -37,10 +37,9 @@ public class PassordService {
         return DatatypeConverter.printHexBinary(salt);
     }
 
-
     private static String hashMedSalt(String passord, String salt) {
 
-        if (passord == null || salt == null) { //Burde validert skikkelig!!
+        if (passord == null || salt == null) {
             throw new IllegalArgumentException();
         }
 

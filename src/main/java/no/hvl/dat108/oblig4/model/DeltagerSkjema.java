@@ -4,22 +4,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-/*
- * Denne klassen representerer påmeldingsskjema med de reglene
- * vi har satt for hva som er gyldige data.
- * 
- * Vi kan bruke automatisk Data Binding og Bean Validation på denne 
- * i Controlleren.
- * 
- * Det er deretter mulig å opprette et Deltager-objekt fra denne med
- * metoden lagDeltager().
- */
 public class DeltagerSkjema {
 
-    /*
-     * Her er noen konstanter som kan brukes til å "bygge" regulære uttrykk.
-     * De må ikke brukes, men kan kanskje være til hjelp.
-     */
     public static final String STRING_START = "^";
     public static final String STRING_END = "$";
     public static final String A_LETTER_SPACE_OR_HYPHEN = "[a-zA-ZæøåÆØÅ -]";
@@ -50,24 +36,13 @@ public class DeltagerSkjema {
     @NotNull(message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
     @Size(min = 4, message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
 	private String passord;
-    
-    //Denne valideres programmatisk i PaameldingController
+
 	private String passordRepetert;
 
     @NotNull(message = Feilmeldinger.UGYLDIG_KJONN_MLD)
     @Pattern(regexp = "^(mann|kvinne)$", message = Feilmeldinger.UGYLDIG_KJONN_MLD)
 	private String kjonn;
-	
-	//---
-    
-    /**
-     * Lager og returnerer et deltagerobjekt (/-entitet) basert på 
-     * dataene i dette deltagerskjemaet.
-     * 
-     * Parameteren passord inneholder skal inneholde et ferdig hashet passord !
-     * Det er valgt å gjøre hashing av passord utenfor Deltagerskjema-klassen for
-     * å holde den "plain".
-     */
+
     public Deltager lagDeltager(String hashetPassord) {
     	return new Deltager(mobil, hashetPassord, fornavn, etternavn, kjonn);
  	}
