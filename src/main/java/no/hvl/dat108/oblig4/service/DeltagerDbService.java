@@ -1,10 +1,12 @@
 package no.hvl.dat108.oblig4.service;
 
 import no.hvl.dat108.oblig4.model.Deltager;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DeltagerDbService {
 
     private static List<Deltager> deltagerliste = new ArrayList<>(List.of(

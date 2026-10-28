@@ -30,5 +30,16 @@
         <button type="submit">Logg ut</button>
     </form>
 
+    <script th:inline="javascript">
+        const startAntall = /*[[${#lists.size(deltagere)}]]*/ 0;
+        setInterval(async () => {
+          const r = await fetch('/deltagerliste/antall');
+          if (r.status === 401) { location.href = '/innlogging'; return; }
+          if ((await r.json()) !== startAntall) location.reload();
+        }, 5000);
+    </script>
+
+
+
 </body>
 </html>

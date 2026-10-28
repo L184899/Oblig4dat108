@@ -3,17 +3,19 @@ package no.hvl.dat108.oblig4.service;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import no.hvl.dat108.oblig4.model.Deltager;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LogginnService {
 
 
-    public static boolean erBrukerLoggetInn(HttpServletRequest request) {
+    public boolean erBrukerLoggetInn(HttpServletRequest request) {
 
         HttpSession sesjon = request.getSession(false);
         return sesjon != null && sesjon.getAttribute("innlogget") != null;
     }
 
-    public static void loggUtBruker(HttpServletRequest request) {
+    public void loggUtBruker(HttpServletRequest request) {
 
         HttpSession sesjon = request.getSession(false);
         if (sesjon != null) {
@@ -21,7 +23,7 @@ public class LogginnService {
         }
     }
 
-    public static void loggInnBruker(HttpServletRequest request, Deltager deltager) {
+    public void loggInnBruker(HttpServletRequest request, Deltager deltager) {
 
         loggUtBruker(request);
         HttpSession sesjon = request.getSession(true);
@@ -29,7 +31,7 @@ public class LogginnService {
     }
 
 
-    public static Deltager hentInnloggetBruker(HttpServletRequest request) {
+    public Deltager hentInnloggetBruker(HttpServletRequest request) {
 
         HttpSession sesjon = request.getSession(false);
         return (sesjon == null) ? null : (Deltager) sesjon.getAttribute("innlogget");

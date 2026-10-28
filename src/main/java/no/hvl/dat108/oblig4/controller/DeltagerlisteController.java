@@ -11,7 +11,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class DeltagerlisteController {
-	
+
+
+    private final DeltagerDbService deltagerService;
+    private final LogginnService logginnService;
+
+    public DeltagerlisteController(DeltagerDbService ds, LogginnService ls) {
+        this.deltagerService = ds;
+        this.logginnService = ls;
+    }
 
     @GetMapping("/deltagerliste")
     public String henteDeltagerliste(HttpServletRequest request, Model model,

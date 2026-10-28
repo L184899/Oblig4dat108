@@ -1,7 +1,11 @@
 package no.hvl.dat108.oblig4.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+
 import java.util.Comparator;
 
+@Entity
+@Table(name = "deltager")
 public class Deltager {
     
     private static final String MANN_SYMBOL = "&#9794;";
@@ -10,6 +14,7 @@ public class Deltager {
     public static final Comparator<Deltager> paaFulltNavn 
     		= Comparator.comparing(Deltager::getFulltNavn); 
 
+    @Id
     private String mobil;
     private String hashetPassord;
     private String fornavn;

@@ -1,6 +1,7 @@
 package no.hvl.dat108.oblig4.service;
 
 import jakarta.xml.bind.DatatypeConverter;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
@@ -8,15 +9,16 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 
+@Service
 public class PassordService {
 
-	private final static String DEFAULT_SALT = "ABCD";
+	private final String DEFAULT_SALT = "ABCD";
 
-    public static String lagHashetPassord(String passordKlartekst) {
+    public String lagHashetPassord(String passordKlartekst) {
         return hashMedSalt(passordKlartekst, DEFAULT_SALT);
     }
 
-	public static boolean erPassordKorrekt(
+	public boolean erPassordKorrekt(
 			String passord, String hashetPassord) {
 		
 		if (passord == null || hashetPassord == null) {
@@ -25,7 +27,7 @@ public class PassordService {
 		return hashetPassord.equals(lagHashetPassord(passord));
 	}
 
-    private static String genererTilfeldigSalt() {
+    private String genererTilfeldigSalt() {
         SecureRandom sr;
         byte[] salt = new byte[16];
         try {
@@ -37,7 +39,7 @@ public class PassordService {
         return DatatypeConverter.printHexBinary(salt);
     }
 
-    private static String hashMedSalt(String passord, String salt) {
+    private String hashMedSalt(String passord, String salt) {
 
         if (passord == null || salt == null) {
             throw new IllegalArgumentException();
