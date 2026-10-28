@@ -1,0 +1,42 @@
+### Hente alle deltagere
+GET http://localhost:8080/api/deltagere
+X-API-KEY: hemmelig-noekkel-123
+
+### Hente deltager med mobil 12345678
+GET http://localhost:8080/api/deltagere/12345678
+X-API-KEY: hemmelig-noekkel-123
+
+### Hente deltager som ikke finnes (skal gi 404)
+GET http://localhost:8080/api/deltagere/00000000
+X-API-KEY: hemmelig-noekkel-123
+
+### Uten API-nøkkel (skal gi 401)
+GET http://localhost:8080/api/deltagere
+
+### Melde på ny deltager (første gang 201, andre gang 409)
+POST http://localhost:8080/api/deltagere
+Content-Type: application/json; charset=utf-8
+X-API-KEY: hemmelig-noekkel-123
+
+{
+  "fornavn": "Lise",
+  "etternavn": "Hansen",
+  "mobil": "11223344",
+  "passord": "hemmelig",
+  "passordRepetert": "hemmelig",
+  "kjonn": "kvinne"
+}
+
+### Ugyldig input (mobil for kort, skal gi 400)
+POST http://localhost:8080/api/deltagere
+Content-Type: application/json; charset=utf-8
+X-API-KEY: hemmelig-noekkel-123
+
+{
+  "fornavn": "Lise",
+  "etternavn": "Hansen",
+  "mobil": "123",
+  "passord": "hemmelig",
+  "passordRepetert": "hemmelig",
+  "kjonn": "kvinne"
+}

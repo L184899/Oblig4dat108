@@ -15,6 +15,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class InnUtloggingController {
 
+    private final DeltagerDbService deltagerService;
+    private final LogginnService logginnService;
+    private final PassordService passordService;
+
+    public InnUtloggingController(DeltagerDbService ds, LogginnService ls, PassordService ps) {
+        this.deltagerService = ds;
+        this.logginnService = ls;
+        this.passordService = ps;
+    }
+
 
     @GetMapping("/innlogging")
 	public String henteSkjema() {

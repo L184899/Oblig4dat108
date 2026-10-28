@@ -1,18 +1,15 @@
 package no.hvl.dat108.oblig4.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-
-import java.util.Comparator;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "deltager")
+@Table(name = "deltager", schema = "oblig5_gr5")
 public class Deltager {
-    
+
     private static final String MANN_SYMBOL = "&#9794;";
     private static final String KVINNE_SYMBOL = "&#9792;";
-
-    public static final Comparator<Deltager> paaFulltNavn 
-    		= Comparator.comparing(Deltager::getFulltNavn); 
 
     @Id
     private String mobil;
