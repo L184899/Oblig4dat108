@@ -45,7 +45,7 @@ public class DeltagerApiController {
     }
 
     // POST /api/deltagere : meld på ny deltager
-    @PostMapping
+    @PostMapping({"", "/"})
     public ResponseEntity<?> meldPaa(@Valid @RequestBody DeltagerSkjema skjema,
                                      BindingResult bindingResult) {
 

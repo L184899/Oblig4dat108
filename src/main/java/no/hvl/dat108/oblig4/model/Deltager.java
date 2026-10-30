@@ -4,9 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "deltager", schema = "oblig5_gr5")
-public class Deltager {
+public class Deltager implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private static final String MANN_SYMBOL = "&#9794;";
     private static final String KVINNE_SYMBOL = "&#9792;";
@@ -19,19 +23,19 @@ public class Deltager {
     private String kjonn;
 
     public Deltager() {}
-    
+
     public Deltager(String mobil, String hashetPassord, String fornavn, String etternavn, String kjonn) {
-		this.mobil = mobil;
-		this.hashetPassord = hashetPassord;
-		this.fornavn = fornavn;
-		this.etternavn = etternavn;
-		this.kjonn = kjonn;
-	}
+        this.mobil = mobil;
+        this.hashetPassord = hashetPassord;
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+        this.kjonn = kjonn;
+    }
 
     public Deltager(String fornavn, String etternavn) {
-		this.fornavn = fornavn;
-		this.etternavn = etternavn;
-	}
+        this.fornavn = fornavn;
+        this.etternavn = etternavn;
+    }
 
     public String getMobilFormatert() {
         return getMobil().substring(0,3) + " " + getMobil().substring(3,5)
@@ -41,20 +45,20 @@ public class Deltager {
     public String getFulltNavn() {
         return getFornavn() + " " + getEtternavn();
     }
-    
+
     public String getKjonnsymbol() {
         return (getKjonn().equals("mann") ? MANN_SYMBOL : KVINNE_SYMBOL);
     }
 
-	public String getMobil() {
+    public String getMobil() {
         return mobil;
     }
     public void setMobil(String mobil) {
-    	this.mobil = mobil;
+        this.mobil = mobil;
     }
     public String getHashetPassord() {
-		return hashetPassord;
-	}
+        return hashetPassord;
+    }
     public String getFornavn() {
         return fornavn;
     }

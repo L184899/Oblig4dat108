@@ -25,36 +25,33 @@ public class InnUtloggingController {
         this.passordService = ps;
     }
 
-
     @GetMapping("/innlogging")
-	public String henteSkjema() {
-
+    public String henteSkjema() {
         return "logginn";
-	}
+    }
 
     @PostMapping("/innlogging")
-	public String loggeInn(@RequestParam String mobil, @RequestParam String passord, 
-			HttpServletRequest request, RedirectAttributes ra) {
+    public String loggeInn(@RequestParam String mobil, @RequestParam String passord,
+                           HttpServletRequest request, RedirectAttributes ra) {
 
-        Deltager deltager = DeltagerDbService.finnDeltagerMedMobil(mobil);
+        // ENDRET: instansmetoder via injiserte services (var static-kall i Oblig4)
+        Deltager deltager = deltagerService.finnDeltagerMedMobil(mobil);
 
         if (deltager == null
-                || !PassordService.erPassordKorrekt(passord, deltager.getHashetPassord())) {
+                || !passordService.erPassordKorrekt(passord, deltager.getHashetPassord())) {
             ra.addFlashAttribute("feilmelding", Feilmeldinger.UGYLDIG_BRUKERNAVN_PASSORD_MLD);
             return "redirect:/innlogging";
         }
 
-        LogginnService.loggInnBruker(request, deltager);
+        logginnService.loggInnBruker(request, deltager);
         return "redirect:/deltagerliste";
-	}
-
+    }
 
     @PostMapping("/utlogging")
-	public String loggeUt(HttpServletRequest request, RedirectAttributes ra) {
+    public String loggeUt(HttpServletRequest request, RedirectAttributes ra) {
 
-        LogginnService.loggUtBruker(request);
+        logginnService.loggUtBruker(request);
         ra.addFlashAttribute("feilmelding", Feilmeldinger.UTLOGGET_MLD);
         return "redirect:/innlogging";
-	}
-
+    }
 }
