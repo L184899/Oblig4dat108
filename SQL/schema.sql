@@ -1,0 +1,19 @@
+CREATE SCHEMA IF NOT EXISTS oblig5_gr5;
+SET search_path TO oblig5_gr5;
+
+--CREATE SCHEMA dat108_oblig5_h26;
+ -- SET search_path TO dat108_oblig5_h26>;
+
+CREATE TABLE IF NOT EXISTS deltager (
+    mobil       CHARACTER (8) PRIMARY KEY,
+    passordhash CHARACTER (64) NOT NULL,
+    fornavn     CHARACTER VARYING (40),
+    etternavn   CHARACTER VARYING (40),
+    kjonn       CHARACTER VARYING (6)
+);
+
+INSERT INTO deltager (mobil, passordhash, fornavn, etternavn, kjonn) VALUES
+ ('12345678', '7801EFD2AA2E22B2378E5C70D8D6F683509447B465B0DAF7A2E02477BC2A5228', 'Lars-Petter', 'Helland', 'mann'),
+ ('23456789', '7801EFD2AA2E22B2378E5C70D8D6F683509447B465B0DAF7A2E02477BC2A5228', 'Anne', 'Panne', 'kvinne'),
+ ('90123456', '7801EFD2AA2E22B2378E5C70D8D6F683509447B465B0DAF7A2E02477BC2A5228', 'Arne', 'Arnesen', 'mann')
+ON CONFLICT (mobil) DO NOTHING;

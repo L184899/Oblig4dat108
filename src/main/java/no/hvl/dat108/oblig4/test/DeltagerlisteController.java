@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4.controller;
+package no.hvl.dat108.oblig4.test;
 
 import jakarta.servlet.http.HttpServletRequest;
 import no.hvl.dat108.oblig4.model.Feilmeldinger;
