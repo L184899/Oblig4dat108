@@ -1,7 +1,7 @@
 package no.hvl.dat108.oblig4.test.service;
 
 import org.junit.jupiter.api.Test;
-
+import no.hvl.dat108.oblig4.service.PassordService;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PassordServiceTest {

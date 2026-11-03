@@ -1,6 +1,8 @@
 package no.hvl.dat108.oblig4.test.service;
-
+import no.hvl.dat108.oblig4.service.ApiNokkelService;
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ApiNokkelServiceTest {
 

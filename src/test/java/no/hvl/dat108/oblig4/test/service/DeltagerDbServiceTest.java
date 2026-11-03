@@ -2,6 +2,7 @@ package no.hvl.dat108.oblig4.test.service;
 
 import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.repository.DeltagerRepository;
+import no.hvl.dat108.oblig4.service.DeltagerDbService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

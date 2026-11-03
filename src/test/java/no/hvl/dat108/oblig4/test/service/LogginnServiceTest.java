@@ -1,8 +1,11 @@
 package no.hvl.dat108.oblig4.test.service;
 
 import no.hvl.dat108.oblig4.model.Deltager;
+import no.hvl.dat108.oblig4.service.LogginnService;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 class LogginnServiceTest {
 

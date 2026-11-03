@@ -1,9 +1,6 @@
 CREATE SCHEMA IF NOT EXISTS oblig5_gr5;
 SET search_path TO oblig5_gr5;
 
---CREATE SCHEMA dat108_oblig5_h26;
- -- SET search_path TO dat108_oblig5_h26>;
-
 CREATE TABLE IF NOT EXISTS deltager (
     mobil       CHARACTER (8) PRIMARY KEY,
     passordhash CHARACTER (64) NOT NULL,
