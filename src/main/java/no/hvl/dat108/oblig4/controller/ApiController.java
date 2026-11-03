@@ -1,9 +1,9 @@
-package no.hvl.dat108.oblig4.test;
+package no.hvl.dat108.oblig4.controller;
 
 import jakarta.validation.Valid;
 import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.model.DeltagerPostRequestDTO;
-import no.hvl.dat108.oblig4.model.DeltagerResponseDTO;
+import no.hvl.dat108.oblig4.model.DeltagerSvarDTO;
 import no.hvl.dat108.oblig4.model.Feilmeldinger;
 import no.hvl.dat108.oblig4.service.DeltagerDbService;
 import no.hvl.dat108.oblig4.service.PassordService;
@@ -15,10 +15,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
-/**
- * API-nøkkel (header Api-Key) sjekkes for alle /api/**-requests i ApiKeyInterceptor,
- * og gir 401 før noe av koden under kjøres.
- */
 @RestController
 @RequestMapping("/api/deltagere")
 public class ApiController {
@@ -31,25 +27,22 @@ public class ApiController {
         this.passordService = ps;
     }
 
-    // GET /api/deltagere : 200 med liste (401 håndteres av interceptoren)
     @GetMapping
-    public List<DeltagerResponseDTO> hentAlle() {
+    public List<DeltagerSvarDTO> hentAlle() {
         return deltagerService.finnAlleSortertPaaFulltNavn().stream()
-                .map(DeltagerResponseDTO::new)
+                .map(DeltagerSvarDTO::new)
                 .toList();
     }
 
-    // GET /api/deltagere/{mobil} : 200 med deltager, eller 404
     @GetMapping("/{mobil}")
-    public ResponseEntity<DeltagerResponseDTO> hentEn(@PathVariable String mobil) {
+    public ResponseEntity<DeltagerSvarDTO> hentEn(@PathVariable String mobil) {
         Deltager d = deltagerService.finnDeltagerMedMobil(mobil);
         if (d == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new DeltagerResponseDTO(d));
+        return ResponseEntity.ok(new DeltagerSvarDTO(d));
     }
 
-    // POST /api/deltagere : 201 (+Location), 400 (automatisk ved ugyldig body), 409
     @PostMapping
     public ResponseEntity<String> meldPaa(@Valid @RequestBody DeltagerPostRequestDTO dto) {
 

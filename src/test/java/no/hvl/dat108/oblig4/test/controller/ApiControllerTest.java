@@ -5,7 +5,7 @@ import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.service.ApiNokkelService;
 import no.hvl.dat108.oblig4.service.DeltagerDbService;
 import no.hvl.dat108.oblig4.service.PassordService;
-import no.hvl.dat108.oblig4.test.ApiController;
+import no.hvl.dat108.oblig4.controller.ApiController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;

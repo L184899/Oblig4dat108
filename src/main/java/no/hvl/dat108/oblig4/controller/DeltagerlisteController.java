@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4.test;
+package no.hvl.dat108.oblig4.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import no.hvl.dat108.oblig4.model.Feilmeldinger;
@@ -37,7 +37,6 @@ public class DeltagerlisteController {
         return "deltagerliste";
     }
 
-    // Kalles av JavaScript hvert 5. sekund. Krever innlogging (session), ikke API-nøkkel.
     @GetMapping("/deltagerliste/antall")
     @ResponseBody
     public ResponseEntity<Long> antall(HttpServletRequest request) {

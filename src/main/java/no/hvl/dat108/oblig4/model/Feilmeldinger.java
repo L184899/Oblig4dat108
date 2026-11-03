@@ -3,15 +3,17 @@ package no.hvl.dat108.oblig4.model;
 public class Feilmeldinger {
 
 
-	public static final String UGYLDIG_FORNAVN_MLD = "Må være 2-20 tegn og starte med stor bokstav"; 
-	public static final String UGYLDIG_ETTERNAVN_MLD = "Etternavn må være 2-20 tegn, og første tegn en stor bokstav. Ingen mellomrom"; 
-	public static final String UGYLDIG_MOBIL_MLD = "Må være akkurat 8 siffer"; 
-	public static final String UGYLDIG_PASSORD_MLD = "Passord må være minst 4 tegn. Alle tegn er lov"; 
-	public static final String UGYLDIG_KJONN_MLD = "Du må krysse av for mann eller kvinne";
-	public static final String GENERELL_BINDING_MLD = "Påmeldingsdetaljer er ugyldige";
-	public static final String FEIL_REPETERT_PASSORD_MLD = "Repetert passord må være likt passord"; 
-	public static final String ALLEREDE_PAAMELDT_MLD = "En deltager med dette nummeret er allerede påmeldt";
-	public static final String KREVER_INNLOGGET_MLD = "Forespørselen din krever at du er innlogget";
-	public static final String UGYLDIG_BRUKERNAVN_PASSORD_MLD = "Ugyldig brukernavn og/eller passord";
-	public static final String UTLOGGET_MLD = "Du er logget ut";
+    public static final String UGYLDIG_FORNAVN_MLD = "Må være 2-20 tegn og starte med stor bokstav";
+    public static final String UGYLDIG_ETTERNAVN_MLD = "Etternavn må være 2-20 tegn, og første tegn en stor bokstav. Ingen mellomrom";
+    public static final String UGYLDIG_MOBIL_MLD = "Må være akkurat 8 siffer";
+    public static final String UGYLDIG_PASSORD_MLD = "Passord må være minst 4 tegn. Alle tegn er lov";
+    public static final String UGYLDIG_KJONN_MLD = "Du må krysse av for mann eller kvinne";
+    public static final String GENERELL_BINDING_MLD = "Påmeldingsdetaljer er ugyldige";
+    public static final String FEIL_REPETERT_PASSORD_MLD = "Repetert passord må være likt passord";
+    public static final String ALLEREDE_PAAMELDT_MLD = "En deltager med dette nummeret er allerede påmeldt";
+    public static final String KREVER_INNLOGGET_MLD = "Forespørselen din krever at du er innlogget";
+    public static final String UGYLDIG_BRUKERNAVN_PASSORD_MLD = "Ugyldig brukernavn og/eller passord";
+    public static final String UTLOGGET_MLD = "Du er logget ut";
+    public static final String UGYLDIG_API_NOKKEL_MLD = "API-nøkkel mangler eller er ugyldig. Send gyldig nøkkel i headeren Api-Key";
+    public static final String API_PAAMELDT_OK_MLD = "Deltager er påmeldt";
 }

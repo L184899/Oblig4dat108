@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4.test;
+package no.hvl.dat108.oblig4.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import no.hvl.dat108.oblig4.model.Deltager;
@@ -34,7 +34,6 @@ public class InnUtloggingController {
     public String loggeInn(@RequestParam String mobil, @RequestParam String passord,
                            HttpServletRequest request, RedirectAttributes ra) {
 
-        // ENDRET: instansmetoder via injiserte services (var static-kall i Oblig4)
         Deltager deltager = deltagerService.finnDeltagerMedMobil(mobil);
 
         if (deltager == null

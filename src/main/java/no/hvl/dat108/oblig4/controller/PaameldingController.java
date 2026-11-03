@@ -1,4 +1,4 @@
-package no.hvl.dat108.oblig4.test;
+package no.hvl.dat108.oblig4.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -19,7 +19,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class PaameldingController {
 
-    // NYTT: Dependency Injection via konstruktør (ingen static-kall lenger)
     private final DeltagerDbService deltagerService;
     private final LogginnService logginnService;
     private final PassordService passordService;
