@@ -49,9 +49,9 @@ class DeltagerSkjemaValideringTest {
         DeltagerSkjema s = gyldig();
         s.setFornavn("O");
         Assertions.assertFalse(erGyldig(s));
-        s.setFornavn("A" + "a".repeat(20)); // 21 tegn
+        s.setFornavn("A" + "a".repeat(20));
         Assertions.assertFalse(erGyldig(s));
-        s.setFornavn("A" + "a".repeat(19)); // 20 tegn
+        s.setFornavn("A" + "a".repeat(19));
         Assertions.assertTrue(erGyldig(s));
     }
 
