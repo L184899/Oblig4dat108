@@ -3,7 +3,7 @@ package no.hvl.dat108.oblig4.controller;
 import jakarta.validation.Valid;
 import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.model.DeltagerPostRequestDTO;
-import no.hvl.dat108.oblig4.model.DeltagerSvarDTO;
+import no.hvl.dat108.oblig4.model.DeltagerResponseDTO;
 import no.hvl.dat108.oblig4.model.Feilmeldinger;
 import no.hvl.dat108.oblig4.service.DeltagerDbService;
 import no.hvl.dat108.oblig4.service.PassordService;
@@ -28,19 +28,19 @@ public class ApiController {
     }
 
     @GetMapping
-    public List<DeltagerSvarDTO> hentAlle() {
+    public List<DeltagerResponseDTO> hentAlle() {
         return deltagerService.finnAlleSortertPaaFulltNavn().stream()
-                .map(DeltagerSvarDTO::new)
+                .map(DeltagerResponseDTO::new)
                 .toList();
     }
 
     @GetMapping("/{mobil}")
-    public ResponseEntity<DeltagerSvarDTO> hentEn(@PathVariable String mobil) {
+    public ResponseEntity<DeltagerResponseDTO> hentEn(@PathVariable String mobil) {
         Deltager d = deltagerService.finnDeltagerMedMobil(mobil);
         if (d == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new DeltagerSvarDTO(d));
+        return ResponseEntity.ok(new DeltagerResponseDTO(d));
     }
 
     @PostMapping
@@ -54,8 +54,7 @@ public class ApiController {
         Deltager deltager = dto.lagDeltager(passordService.lagHashetPassord(dto.passord()));
         deltagerService.lagreDeltager(deltager);
 
-        URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
-                .path("/{mobil}").buildAndExpand(deltager.getMobil()).toUri();
+        URI location = URI.create("/api/deltagere/" + deltager.getMobil());
 
         return ResponseEntity.created(location).body(Feilmeldinger.API_PAAMELDT_OK_MLD);
     }

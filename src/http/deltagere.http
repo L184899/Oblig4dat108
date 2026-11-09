@@ -1,27 +1,23 @@
-### 1) 200 OK - liste av deltagere
+### 1.liste av deltagere
 GET http://localhost:8080/api/deltagere
 Api-Key: hemmelig-noekkel-123
 
-### 2) 401 Unauthorized - mangler nøkkel
+### 2.mangler nøkkel
 GET http://localhost:8080/api/deltagere
 
-############ GET /api/deltagere/{mobil} ############
-
-### 3) 200 OK - deltager finnes
+### 3.deltager finnes
 GET http://localhost:8080/api/deltagere/12345678
 Api-Key: hemmelig-noekkel-123
 
-### 4) 401 Unauthorized - ugyldig nøkkel
+### 4.ugyldig nøkkel
 GET http://localhost:8080/api/deltagere/12345678
 Api-Key: feil-noekkel
 
-### 5) 404 Not Found - deltager finnes ikke
+### 5.deltager finnes ikke
 GET http://localhost:8080/api/deltagere/00000000
 Api-Key: hemmelig-noekkel-123
 
-############ POST /api/deltagere ############
-
-### 6) 201 Created - ny deltager (Location-header + melding). Gir 409 hvis kjørt to ganger.
+### 6.ny deltager
 POST http://localhost:8080/api/deltagere
 Content-Type: application/json; charset=utf-8
 Api-Key: hemmelig-noekkel-123
@@ -34,7 +30,7 @@ Api-Key: hemmelig-noekkel-123
   "kjonn": "kvinne"
 }
 
-### 7) 401 Unauthorized - mangler nøkkel
+### 7.mangler nøkkel
 POST http://localhost:8080/api/deltagere
 Content-Type: application/json; charset=utf-8
 
@@ -46,7 +42,7 @@ Content-Type: application/json; charset=utf-8
   "kjonn": "kvinne"
 }
 
-### 8) 400 Bad Request - ugyldig input (mobil for kort)
+### 8.ugyldig input
 POST http://localhost:8080/api/deltagere
 Content-Type: application/json; charset=utf-8
 Api-Key: hemmelig-noekkel-123
@@ -59,15 +55,15 @@ Api-Key: hemmelig-noekkel-123
   "kjonn": "kvinne"
 }
 
-### 9) 409 Conflict - mobil 12345678 er allerede påmeldt
+### 9.mobil 12345678 er allerede påmeldt
 POST http://localhost:8080/api/deltagere
 Content-Type: application/json; charset=utf-8
 Api-Key: hemmelig-noekkel-123
 
 {
-  "fornavn": "Ola",
-  "etternavn": "Nordmann",
+  "fornavn": "Yelyzaveta",
+  "etternavn": "Lah",
   "mobil": "12345678",
   "passord": "hemmelig",
-  "kjonn": "mann"
+  "kjonn": "kvinne"
 }

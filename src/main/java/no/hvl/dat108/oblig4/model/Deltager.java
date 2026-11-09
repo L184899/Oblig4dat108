@@ -5,13 +5,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.io.Serializable;
-
 @Entity
 @Table(name = "deltager", schema = "oblig5_gr5")
-public class Deltager implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Deltager {
 
     private static final String MANN_SYMBOL = "&#9794;";
     private static final String KVINNE_SYMBOL = "&#9792;";

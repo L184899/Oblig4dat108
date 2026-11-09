@@ -4,9 +4,8 @@ import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.model.DeltagerPostRequestDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class DeltagerPostRequestDTOValideringTest {
 
@@ -20,31 +19,31 @@ class DeltagerPostRequestDTOValideringTest {
 
     @Test
     void gyldigDtoGodkjennes() {
-        assertTrue(erGyldig("12345678", "hemmelig", "Ola", "Nordmann", "mann"));
+        Assertions.assertTrue(erGyldig("12345678", "hemmelig", "Ola", "Nordmann", "mann"));
     }
 
     @Test
     void ugyldigMobilAvvises() {
-        assertFalse(erGyldig("123", "hemmelig", "Ola", "Nordmann", "mann"));
-        assertFalse(erGyldig("1234567a", "hemmelig", "Ola", "Nordmann", "mann"));
-        assertFalse(erGyldig(null, "hemmelig", "Ola", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig("123", "hemmelig", "Ola", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig("1234567a", "hemmelig", "Ola", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig(null, "hemmelig", "Ola", "Nordmann", "mann"));
     }
 
     @Test
     void ugyldigFornavnOgEtternavnAvvises() {
-        assertFalse(erGyldig("12345678", "hemmelig", "ola", "Nordmann", "mann"));
-        assertFalse(erGyldig("12345678", "hemmelig", "Ola", "Nor mann", "mann"));
-        assertFalse(erGyldig("12345678", "hemmelig", "O", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig("12345678", "hemmelig", "ola", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig("12345678", "hemmelig", "Ola", "Nor mann", "mann"));
+        Assertions.assertFalse(erGyldig("12345678", "hemmelig", "O", "Nordmann", "mann"));
     }
 
     @Test
     void forKortPassordAvvises() {
-        assertFalse(erGyldig("12345678", "abc", "Ola", "Nordmann", "mann"));
+        Assertions.assertFalse(erGyldig("12345678", "abc", "Ola", "Nordmann", "mann"));
     }
 
     @Test
     void ugyldigKjonnAvvises() {
-        assertFalse(erGyldig("12345678", "hemmelig", "Ola", "Nordmann", "annet"));
+        Assertions.assertFalse(erGyldig("12345678", "hemmelig", "Ola", "Nordmann", "annet"));
     }
 
     @Test
@@ -54,7 +53,7 @@ class DeltagerPostRequestDTOValideringTest {
 
         Deltager d = dto.lagDeltager("HASH");
 
-        assertEquals("HASH", d.getHashetPassord());
-        assertEquals("12345678", d.getMobil());
+        Assertions.assertEquals("HASH", d.getHashetPassord());
+        Assertions.assertEquals("12345678", d.getMobil());
     }
 }

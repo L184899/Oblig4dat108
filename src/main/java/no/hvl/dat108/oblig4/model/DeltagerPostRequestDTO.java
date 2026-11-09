@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Size;
 
 import static no.hvl.dat108.oblig4.model.DeltagerSkjema.*;
 
-/** Data som sendes inn i POST /api/deltagere. Samme valideringsregler som i Oblig4. */
 public record DeltagerPostRequestDTO(
 
         @NotNull(message = Feilmeldinger.UGYLDIG_MOBIL_MLD)
@@ -16,7 +15,7 @@ public record DeltagerPostRequestDTO(
 
         @NotNull(message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
         @Size(min = 4, message = Feilmeldinger.UGYLDIG_PASSORD_MLD)
-        String passord, // passord i klartekst
+        String passord,
 
         @NotNull(message = Feilmeldinger.UGYLDIG_FORNAVN_MLD)
         @Pattern(regexp = STRING_START + A_CAPITAL_LETTER + A_LETTER_SPACE_OR_HYPHEN

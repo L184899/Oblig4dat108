@@ -30,8 +30,4 @@ public class DeltagerDbService {
     public void lagreDeltager(Deltager deltager) {
         deltagerRepository.save(deltager);
     }
-
-    public long antallDeltagere() {
-        return deltagerRepository.count();
-    }
 }
