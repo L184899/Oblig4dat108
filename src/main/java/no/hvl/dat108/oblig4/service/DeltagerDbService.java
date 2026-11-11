@@ -3,6 +3,7 @@ package no.hvl.dat108.oblig4.service;
 import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.repository.DeltagerRepository;
 import org.springframework.stereotype.Service;
+import java.util.Comparator;
 
 import java.util.List;
 
@@ -20,7 +21,10 @@ public class DeltagerDbService {
     }
 
     public List<Deltager> finnAlleSortertPaaFulltNavn() {
-        return deltagerRepository.findAllByOrderByFornavnAscEtternavnAsc();
+        return deltagerRepository.findAll().stream()
+                .sorted(Comparator.comparing(Deltager::getFornavn)
+                        .thenComparing(Deltager::getEtternavn))
+                .toList();
     }
 
     public boolean erDeltagerPaameldt(String mobil) {

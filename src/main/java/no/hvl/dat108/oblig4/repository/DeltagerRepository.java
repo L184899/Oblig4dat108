@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface DeltagerRepository extends JpaRepository<Deltager, String> {
 
-    List<Deltager> findAllByOrderByFornavnAscEtternavnAsc();
 }

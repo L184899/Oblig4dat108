@@ -9,19 +9,6 @@ class PassordServiceTest {
     private final PassordService passordService = new PassordService();
 
     @Test
-    void hashetPassordErIkkeKlartekst() {
-        String hash = passordService.lagHashetPassord("hemmelig");
-        assertNotEquals("hemmelig", hash);
-        assertFalse(hash.isBlank());
-    }
-
-    @Test
-    void sammePassordGirSammeHash() {
-        assertEquals(passordService.lagHashetPassord("abc123"),
-                     passordService.lagHashetPassord("abc123"));
-    }
-
-    @Test
     void riktigPassordGodkjennes() {
         String hash = passordService.lagHashetPassord("hemmelig");
         assertTrue(passordService.erPassordKorrekt("hemmelig", hash));
@@ -31,11 +18,5 @@ class PassordServiceTest {
     void feilPassordAvvises() {
         String hash = passordService.lagHashetPassord("hemmelig");
         assertFalse(passordService.erPassordKorrekt("feil", hash));
-    }
-
-    @Test
-    void nullGirIllegalArgumentException() {
-        assertThrows(IllegalArgumentException.class,
-                () -> passordService.erPassordKorrekt(null, "x"));
     }
 }

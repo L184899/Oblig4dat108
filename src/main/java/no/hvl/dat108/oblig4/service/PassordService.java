@@ -2,7 +2,6 @@ package no.hvl.dat108.oblig4.service;
 
 import jakarta.xml.bind.DatatypeConverter;
 import org.springframework.stereotype.Service;
-
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import java.security.NoSuchAlgorithmException;
