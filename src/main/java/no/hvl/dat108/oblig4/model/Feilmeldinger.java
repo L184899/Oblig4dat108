@@ -2,7 +2,6 @@ package no.hvl.dat108.oblig4.model;
 
 public class Feilmeldinger {
 
-
     public static final String UGYLDIG_FORNAVN_MLD = "Må være 2-20 tegn og starte med stor bokstav";
     public static final String UGYLDIG_ETTERNAVN_MLD = "Etternavn må være 2-20 tegn, og første tegn en stor bokstav. Ingen mellomrom";
     public static final String UGYLDIG_MOBIL_MLD = "Må være akkurat 8 siffer";

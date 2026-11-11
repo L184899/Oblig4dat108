@@ -4,7 +4,6 @@ import no.hvl.dat108.oblig4.model.Deltager;
 import no.hvl.dat108.oblig4.repository.DeltagerRepository;
 import org.springframework.stereotype.Service;
 import java.util.Comparator;
-
 import java.util.List;
 
 @Service
